@@ -14,7 +14,7 @@ vector是一个封装了动态大小数组的顺序容器，可以认为是一�
 
 ### 函数实现
 
-**include <vector>**
+**include < vector >**
 
 #### 构造
 
