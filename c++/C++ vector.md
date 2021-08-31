@@ -18,17 +18,17 @@ vector是一个封装了动态大小数组的顺序容器，可以认为是一�
 
 #### 构造
 
-vector() ; //e.g.  vector<int> obj;
+vector() ; //e.g.  vector< int > obj;
 
 vector(int nSize); 元素个数nSize 没有给出初值的话值是不确定的
 
 vector(int nSize, const T& t); nSize个值为t的元素
 
-vector<int> a(b)拷贝构造
+vector< int > a(b)拷贝构造
 
-vector<int> a(b.begin(), b.begin()+3) 这里b是vector
+vector< int > a(b.begin(), b.begin()+3) 这里b是vector
 
-vector<int> a(b,b+3) 这里b是数组
+vector< int > a(b,b+3) 这里b是数组
 
 #### 插入
 
@@ -70,7 +70,7 @@ reverse_iterator rend() 反向迭代器，指向第一个元素之前的位置
 
 迭代器访问： 
 
-vector<int>:: iterator it; 迭代器是一个指向元素的指针 
+vector< int >:: iterator it; 迭代器是一个指向元素的指针 
 
 for(it=vec.begin();it!=vec.end();it++) { cout<<*it; }
 
@@ -92,19 +92,23 @@ resize(int n, const T& x) 将现有元素调为n个，多则删，少则补，�
 
 reserve(int n) 将a的capacity扩容到n个，用于即将给a添加大量数据的时候，避免多次自动扩容带来的性能降低
 
-##### 定义二维数组的三种方法
+##### 定义二维vector的三种方法
 
 1.int n=5, m=6;
 
-vector< vector<int> > obj(n)  外层<>要有空格否则在旧编译器中无法通过
+vector< vector< int > > obj(n)  外层<>要有空格否则在旧编译器中无法通过
 
 for(int i=0;i<obj.size();i++){ obj[i].resize(m); }
 
-2.vecor< vector<int> > obj(n, vector<int>(m))
+2.vecor< vector< int > > obj(n, vector< int >(m))
 
 3.int out[3][2 ={ 1,2,3,4,5,6 };
 
 vector<int*> obj; obj.push_back(out[0])
+
+##### 二维vector的长度
+
+行数：vec.size() 列数：vec[0].size()
 
 #### 算法include< algorithm >
 
@@ -172,8 +176,8 @@ reverse(vec.begin(), vec.end())  从begin()到end()(不包括)的元素倒置 �
 
 4.vector作为函数参数或返回值时，&一定不能少
 
-e.g. double Distance(vector<int>&a, vector<int>&b)
+e.g. double Distance(vector< int>&a, vector< int>&b)
 
-5.vector<int> a; for(int i=0;i<10;i++) a[i]=i
+5.vector< int> a; for(int i=0;i<10;i++) a[i]=i
 
 这种方法是错误的，下标只能用于获取已存在的元素，而现在的a[i]还是未初始化的空对象
