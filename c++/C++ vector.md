@@ -20,7 +20,7 @@ vector是一个封装了动态大小数组的顺序容器，可以认为是一�
 
 vector() ; //e.g.  vector< int > obj;
 
-vector(int nSize); 元素个数nSize 没有给出初值的话值是不确定的
+vector(int nSize); 元素个数nSize 没有给出初值的话值是0
 
 vector(int nSize, const T& t); nSize个值为t的元素
 
@@ -29,6 +29,10 @@ vector< int > a(b)拷贝构造
 vector< int > a(b.begin(), b.begin()+3) 这里b是vector
 
 vector< int > a(b,b+3) 这里b是数组
+
+e.g. vector b( a[0].size(), vector(a.size()) )
+
+就是初始化b是放入a[0].size()即a的列数个默认值，默认值是vector(a.size())，即一个有a.size()个默认元素0的vector
 
 #### 插入
 
@@ -78,6 +82,8 @@ for(it=vec.begin();it!=vec.end();it++) { cout<<*it; }
 
 bool empty() const 
 
+注意vec[0].size()会带来的问题
+
 #### 容器大小
 
 int size() const; 当前含有的元素
@@ -109,6 +115,8 @@ vector<int*> obj; obj.push_back(out[0])
 ##### 二维vector的长度
 
 行数：vec.size() 列数：vec[0].size()
+
+注意，如果vec.size()==0的话vec[0].size()就会报错，如果判断的话可以用vec.size()==0||vec[0].size==0
 
 #### 算法include< algorithm >
 
