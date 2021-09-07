@@ -303,3 +303,44 @@ evenL=(left>>1)+1 evenL*evenR
 报错二：写个for循环，直接result[i]=result[i-1]+nums[i]，错误原因同上，所以在这之前先处理一边，全push_back(0)，反正前缀和数组大小已知，和原数组一样
 
 注意，简单题比较究细节，所以最好的解法是原地修改，nums[i]+=nums[i-1]，刚好也省了新定义vector所带来的如上问题
+
+#### 704 二分查找
+
+2021.9.6
+
+给定一个升序数组和一个目标值，搜索目标值在数组中的下标，没有返回-1
+
+经典的二分
+
+模板：int left=0,right=nums.size()-1;
+
+while(left<=right){
+
+int middle=(left+right)/2; if(nums[middle]<target){ left=middle+1} else if..{ right=middle-1} else..return
+
+}return -1;
+
+注意while循环的判断条件是小于等于
+
+注意循环内的改变条件是left=middle+1和right=middle-1
+
+第一次求middle的时候可以采用int middle=left+(right-left)>>>1 这样可以防止极其微小的可能性和极其刁钻的条件下left+right整型溢出
+
+位操作右移>>1比/2更好，这里的>>>是无符号右移
+
+#### 1221 分割平衡字符串
+
+2021.9.7
+
+L和R字符相同的字符串平衡，给定一个平衡字符串返回她最多能分隔出多少平衡字符串
+
+可以从数学上证明每一次都从最小分割点进行分割（也就是分得尽可能短）就能得到最优解
+
+##### 遍历计数/贪心
+
+if(s[i]=='L') balance++ else balance-- if(balance==0) ans++
+
+注意字符串长度是s.length() 取单个字符可以用s[i]也可以用s.charAt(i)
+
+常见的遍历信息统计可以选择记录前缀信息的数据结构如栈，但对于成对的元素，更好的方式是转为-1，1，0的数学判定
+
